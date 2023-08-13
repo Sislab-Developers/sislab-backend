@@ -33,6 +33,14 @@ const SolicitudSchema = new Schema(
       type: [Map],
       required: [false],
     },
+    omittedReagents: {
+      type: [Map],
+      required: [false],
+    },
+    omittedEquipment: {
+      type: [String],
+      required: [false],
+    },
   },
   { timestamps: true }
 );

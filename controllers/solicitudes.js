@@ -148,6 +148,8 @@ const createRequest = async (req, res) => {
     customReagents,
     customEquipment,
     customWaste,
+    omittedReagents,
+    omittedEquipment,
   } = req.body;
 
   try {
@@ -159,6 +161,8 @@ const createRequest = async (req, res) => {
       customReagents,
       customEquipment,
       customWaste,
+      omittedReagents,
+      omittedEquipment,
       createdAt: new Date().getTime(),
     });
 
