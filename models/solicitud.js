@@ -41,6 +41,7 @@ const SolicitudSchema = new Schema(
       type: [String],
       required: [false],
     },
+    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
   },
   { timestamps: true }
 );

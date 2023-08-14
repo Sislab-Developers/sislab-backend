@@ -1,3 +1,4 @@
+const Comment = require("../models/comment");
 const solicitud = require("../models/solicitud");
 
 const getPreviousMonth = () => {
@@ -23,6 +24,7 @@ const getRequests = async (req, res) => {
       .populate("profId")
       .populate("groupId")
       .populate("assignmentId")
+      .populate("comments")
       .sort({ requestDate: 1 })
       .exec();
 
@@ -47,6 +49,7 @@ const getPendingRequests = async (req, res) => {
       .populate("profId")
       .populate("groupId")
       .populate("assignmentId")
+      .populate("comments")
       .sort({ requestDate: 1 })
       .exec();
 
@@ -71,6 +74,7 @@ const getRequestsByProf = async (req, res) => {
       .populate("profId")
       .populate("groupId")
       .populate("assignmentId")
+      .populate("comments")
       .sort({ requestDate: 1 })
       .exec();
 
@@ -98,6 +102,7 @@ const getRequestsByProfAndDate = async (req, res) => {
       .populate("profId")
       .populate("groupId")
       .populate("assignmentId")
+      .populate("comments")
       .sort({ requestDate: 1 })
       .exec();
 
@@ -122,6 +127,7 @@ const getRequestsByDate = async (req, res) => {
       .populate("profId")
       .populate("groupId")
       .populate("assignmentId")
+      .populate("comments")
       .sort({ requestDate: 1 })
       .exec();
 
@@ -150,9 +156,19 @@ const createRequest = async (req, res) => {
     customWaste,
     omittedReagents,
     omittedEquipment,
+    comment,
   } = req.body;
 
   try {
+    let commentDoc;
+
+    if (comment && comment !== "") {
+      commentDoc = await Comment.create({
+        userId: profId,
+        content: comment,
+      });
+    }
+
     const request = await solicitud.create({
       profId,
       groupId,
@@ -163,6 +179,7 @@ const createRequest = async (req, res) => {
       customWaste,
       omittedReagents,
       omittedEquipment,
+      comments: [commentDoc?._id],
       createdAt: new Date().getTime(),
     });
 
