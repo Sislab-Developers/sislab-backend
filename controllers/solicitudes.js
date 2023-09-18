@@ -15,6 +15,13 @@ const getDateRange = (date) => {
   return { lowerLimit, upperLimit };
 };
 
+const getWeekRange = (start, end) => {
+  const lowerLimit = new Date(start).getTime();
+  const upperLimit = new Date(end).getTime();
+
+  return { lowerLimit, upperLimit };
+};
+
 const getRequests = async (req, res) => {
   const previousMonth = getPreviousMonth();
 
@@ -145,6 +152,43 @@ const getRequestsByDate = async (req, res) => {
   }
 };
 
+const getRequestsByDateRange = async (req, res) => {
+  const { lowerLimit, upperLimit } = getWeekRange(
+    +req.query.start,
+    +req.query.end
+  );
+
+  try {
+    const requests = await solicitud
+      .find({ requestDate: { $gte: lowerLimit, $lt: upperLimit } })
+      .populate("profId")
+      .populate("groupId")
+      .populate("assignmentId")
+      .populate("comments")
+      .exec();
+
+    if (requests.length === 0) {
+      return res.status(200).json({
+        message: "No se encontraron solicitudes para este rango de fechas.",
+        requests,
+      });
+    }
+
+    requests.sort((a, b) => a.groupId.hora - b.groupId.hora);
+    requests.sort((a, b) => a.requestDate - b.requestDate);
+
+    res.status(200).json({
+      requests,
+      message: `${requests.length} solicitudes obtenidas correctamente.`,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Ocurrió un error al obtener las solicitudes.",
+      error,
+    });
+  }
+};
+
 const createRequest = async (req, res) => {
   const {
     profId,
@@ -201,5 +245,6 @@ module.exports = {
   getRequestsByProf,
   getRequestsByProfAndDate,
   getRequestsByDate,
+  getRequestsByDateRange,
   createRequest,
 };
