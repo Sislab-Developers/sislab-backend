@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@knaadh/nestjs-drizzle-postgres':
+        specifier: ^1.2.0
+        version: 1.2.0(@nestjs/common@11.0.3(reflect-metadata@0.2.2)(rxjs@7.8.1))(drizzle-orm@0.38.4(postgres@3.4.5))(postgres@3.4.5)
       '@nestjs/common':
         specifier: ^11.0.1
         version: 11.0.3(reflect-metadata@0.2.2)(rxjs@7.8.1)
@@ -17,6 +20,12 @@ importers:
       '@nestjs/platform-express':
         specifier: ^11.0.1
         version: 11.0.3(@nestjs/common@11.0.3(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@11.0.3)
+      drizzle-orm:
+        specifier: ^0.38.4
+        version: 0.38.4(postgres@3.4.5)
+      postgres:
+        specifier: ^3.4.5
+        version: 3.4.5
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -547,6 +556,13 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
+
+  '@knaadh/nestjs-drizzle-postgres@1.2.0':
+    resolution: {integrity: sha512-F6qFm8yh12uqex//GZsrTTuq1RnwgYYBzw2aWeyeoHMk0qbNP5eog7a8PlL/OLnfW1PX8kPAPWIxAdv5Am68+g==}
+    peerDependencies:
+      '@nestjs/common': '>=9.0.0'
+      drizzle-orm: '>=0.28.6'
+      postgres: '>=3'
 
   '@lukeed/csprng@1.1.0':
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
@@ -1587,6 +1603,98 @@ packages:
   diff@4.0.2:
     resolution: {integrity: sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==}
     engines: {node: '>=0.3.1'}
+
+  drizzle-orm@0.38.4:
+    resolution: {integrity: sha512-s7/5BpLKO+WJRHspvpqTydxFob8i1vo2rEx4pY6TGY7QSMuUfWUuzaY0DIpXCkgHOo37BaFC+SJQb99dDUXT3Q==}
+    peerDependencies:
+      '@aws-sdk/client-rds-data': '>=3'
+      '@cloudflare/workers-types': '>=4'
+      '@electric-sql/pglite': '>=0.2.0'
+      '@libsql/client': '>=0.10.0'
+      '@libsql/client-wasm': '>=0.10.0'
+      '@neondatabase/serverless': '>=0.10.0'
+      '@op-engineering/op-sqlite': '>=2'
+      '@opentelemetry/api': ^1.4.1
+      '@planetscale/database': '>=1'
+      '@prisma/client': '*'
+      '@tidbcloud/serverless': '*'
+      '@types/better-sqlite3': '*'
+      '@types/pg': '*'
+      '@types/react': '>=18'
+      '@types/sql.js': '*'
+      '@vercel/postgres': '>=0.8.0'
+      '@xata.io/client': '*'
+      better-sqlite3: '>=7'
+      bun-types: '*'
+      expo-sqlite: '>=14.0.0'
+      knex: '*'
+      kysely: '*'
+      mysql2: '>=2'
+      pg: '>=8'
+      postgres: '>=3'
+      prisma: '*'
+      react: '>=18'
+      sql.js: '>=1'
+      sqlite3: '>=5'
+    peerDependenciesMeta:
+      '@aws-sdk/client-rds-data':
+        optional: true
+      '@cloudflare/workers-types':
+        optional: true
+      '@electric-sql/pglite':
+        optional: true
+      '@libsql/client':
+        optional: true
+      '@libsql/client-wasm':
+        optional: true
+      '@neondatabase/serverless':
+        optional: true
+      '@op-engineering/op-sqlite':
+        optional: true
+      '@opentelemetry/api':
+        optional: true
+      '@planetscale/database':
+        optional: true
+      '@prisma/client':
+        optional: true
+      '@tidbcloud/serverless':
+        optional: true
+      '@types/better-sqlite3':
+        optional: true
+      '@types/pg':
+        optional: true
+      '@types/react':
+        optional: true
+      '@types/sql.js':
+        optional: true
+      '@vercel/postgres':
+        optional: true
+      '@xata.io/client':
+        optional: true
+      better-sqlite3:
+        optional: true
+      bun-types:
+        optional: true
+      expo-sqlite:
+        optional: true
+      knex:
+        optional: true
+      kysely:
+        optional: true
+      mysql2:
+        optional: true
+      pg:
+        optional: true
+      postgres:
+        optional: true
+      prisma:
+        optional: true
+      react:
+        optional: true
+      sql.js:
+        optional: true
+      sqlite3:
+        optional: true
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -2679,6 +2787,10 @@ packages:
   pluralize@8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
+
+  postgres@3.4.5:
+    resolution: {integrity: sha512-cDWgoah1Gez9rN3H4165peY9qfpEo+SA61oQv65O3cRUE1pOEoJWwddwcqKE8XZYjbblOJlYDlLV4h67HrEVDg==}
+    engines: {node: '>=12'}
 
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
@@ -3966,6 +4078,12 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@knaadh/nestjs-drizzle-postgres@1.2.0(@nestjs/common@11.0.3(reflect-metadata@0.2.2)(rxjs@7.8.1))(drizzle-orm@0.38.4(postgres@3.4.5))(postgres@3.4.5)':
+    dependencies:
+      '@nestjs/common': 11.0.3(reflect-metadata@0.2.2)(rxjs@7.8.1)
+      drizzle-orm: 0.38.4(postgres@3.4.5)
+      postgres: 3.4.5
+
   '@lukeed/csprng@1.1.0': {}
 
   '@napi-rs/nice-android-arm-eabi@1.0.1':
@@ -5050,6 +5168,10 @@ snapshots:
   diff-sequences@29.6.3: {}
 
   diff@4.0.2: {}
+
+  drizzle-orm@0.38.4(postgres@3.4.5):
+    optionalDependencies:
+      postgres: 3.4.5
 
   dunder-proto@1.0.1:
     dependencies:
@@ -6298,6 +6420,8 @@ snapshots:
       find-up: 4.1.0
 
   pluralize@8.0.0: {}
+
+  postgres@3.4.5: {}
 
   prelude-ls@1.2.1: {}
 
