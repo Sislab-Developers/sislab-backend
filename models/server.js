@@ -44,6 +44,7 @@ class Server {
         origin: "https://sislab.vercel.app",
       })
     );
+    
 
     // Lectura y parseo del body
     this.app.use(express.json());
