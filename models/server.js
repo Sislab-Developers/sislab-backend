@@ -41,11 +41,9 @@ class Server {
     // CORS
     this.app.use(
       cors({
-        origin: "https://sislab.vercel.app",
+        origin: "*",
       })
     );
-    
-
     // Lectura y parseo del body
     this.app.use(express.json());
 
