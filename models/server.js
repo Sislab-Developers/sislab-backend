@@ -43,6 +43,7 @@ class Server {
       cors({
         origin: "*",
       })
+      
     );
     // Lectura y parseo del body
     this.app.use(express.json());
