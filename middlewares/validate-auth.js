@@ -2,9 +2,10 @@ const jwt = require("jsonwebtoken");
 
 const Usuario = require("../models/usuario");
 const { response } = require("express");
-const { requireAuth } = require("@clerk/express");
+const { clerkMiddleware } = require("@clerk/express");
 
-const validateAuth = requireAuth({
+const validateAuth = clerkMiddleware({
+  publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
   onError: (error) =>
     response.status(401).json({ message: "Acceso no autorizado", error }),
 });
